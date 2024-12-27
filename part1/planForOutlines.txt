@@ -1,0 +1,12 @@
+1. Render the model at a little higher scale on a different, outline pass. Draw in outline color
+2. Change the depth value of every fragment in this render to slightly farther away then it should be. This should put the
+   outline behind the object model, even with the added scale
+3. Done!
+
+Alternatively, using this probably is a good first step
+https://learnopengl.com/Advanced-OpenGL/Stencil-testing
+
+Post implementation notes:
+* I used the openGL tutorial, not my original approach (even though it would have worked as well)
+* Outline looks good, but might try to scale by normals instead of scale by model scale for the outline, as the outline is a little non-uniform
+around the Chalice in current state (some parts of outline are larger than others)
