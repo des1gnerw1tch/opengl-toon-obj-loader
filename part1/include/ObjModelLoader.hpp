@@ -38,9 +38,9 @@ private:
     std::unordered_map<std::array<int, 3>, int, VertexHashFunctor> vertexMap;
 
     // Gold Chalice
-    u_int8_t defaultColorR = 255;
-    u_int8_t defaultColorG = 215;
-    u_int8_t defaultColorB = 0;
+    u_int8_t defaultColorR = 41;
+    u_int8_t defaultColorG = 88;
+    u_int8_t defaultColorB = 119;
 
     // White Astronaut
     //u_int8_t defaultColorR = 255;

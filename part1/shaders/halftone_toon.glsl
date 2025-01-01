@@ -58,7 +58,7 @@ void RenderRawShadows()	{
 
 float GetRadiusOfDot(float dotProdTimesAttenuation, float distanceBetweenDots)	{
 	// Dot calculations done in texture space (u-v between 0 and 1)
-	float maxDotRadius = distanceBetweenDots * 0.3f;
+	float maxDotRadius = distanceBetweenDots * 0.25f;
 	
 	if (IsFragInShadow())	{
 		return maxDotRadius;
@@ -114,8 +114,13 @@ void main()
 	}
 
 	if (dotProdTimesAttenuation < 0.95f)	{ // Cel shading factor, have some darker color in addition to the dots
-		objectColor4 = max(objectColor4 - 0.05f, 0.0f);
+		objectColor4 = vec4(objectColor4.r - 0.05, objectColor4.g - 0.05, objectColor4.b, 1.0f);
 	}
+
+	//if (dotProdTimesAttenuation > 1.5f)	{ // Cel shading factor, have some darker color in addition to the dots
+	//	objectColor4 = vec4(objectColor4.r + 0.1, objectColor4.g + 0.1, objectColor4.b + 0.2, 1.0f);
+		//objectColor4 = vec4(1, 1, 1, 1);
+	//}
 
 	//if (IsFragInShadow())	{ // Slight darken of pixel if in shadow
 		//objectColor4 = max(objectColor4 - 0.05f, 0.0f);

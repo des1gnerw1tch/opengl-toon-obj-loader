@@ -339,7 +339,7 @@ void GraphicsProgram::PreDraw(int graphicsPipeline, glm::mat4 viewMatrix, glm::m
 
     // Initialize clear color
     // This is the background of the screen.
-    glClearColor(0.53f, 0.81f, 0.92f, 1.0f);
+    glClearColor(0.0941176470588f, 0.0941176470588f, 0.215686f, 1.0f);
 
     // Use our shader
 	glUseProgram(graphicsPipeline);
@@ -476,7 +476,7 @@ void GraphicsProgram::RotateLights()    {
     long long epochTime = deltaTime.GetSystemTimeMs();
     epochTime -= 1730246494422;
     double rad = epochTime * (PI / 180.0);
-    rad /= 18.0; //Changing speed
+    rad /= 20.0; //Changing speed
     double x = cos(rad) * rotationRadius;
     double z = sin(rad) * rotationRadius;
     
@@ -559,13 +559,18 @@ void GraphicsProgram::MainLoop(){
     SDL_WarpMouseInWindow(gGraphicsApplicationWindow,gScreenWidth/2,gScreenHeight/2);
     SDL_SetRelativeMouseMode(SDL_TRUE);
 
-    Plane plane(20.0f, {0, 200, 0});
+    Plane plane(20.0f, {100, 100, 100});
     // Position is behind origin for now, in future can make this position equal to the position of the light to emulate shadow from light
     ShadowDirectionalLight shadowCaster(GL_TEXTURE1, glm::vec3(0, 0.3, 1), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0), 0.1f, 30.0f);
 
     // Chalice
-    glm::vec3 objFileTranslation = glm::vec3(0.0f, 0.0f, 0.0f);
+    /*glm::vec3 objFileTranslation = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::vec3 objFileScale = glm::vec3(6.0f, 6.0f, 6.0f);
+    float objFileOutlineExtrudeDistance = 0.02f;*/
+
+    // Heaven cat
+    glm::vec3 objFileTranslation = glm::vec3(0.0f, -0.09f, 0.0f);
+    glm::vec3 objFileScale = glm::vec3(3.0f, 3.0f, 3.0f);
     float objFileOutlineExtrudeDistance = 0.02f;
 
     // Astronaut
@@ -594,8 +599,8 @@ void GraphicsProgram::MainLoop(){
         DrawLit();
         PreDraw(m_graphicsPipelineShadows, shadowCaster.GetViewMatrix(), shadowCaster.GetProjectionMatrix(), planeTranslation, planeScale);
         plane.Draw();
-        PreDraw(m_graphicsPipelineShadows, shadowCaster.GetViewMatrix(), shadowCaster.GetProjectionMatrix(), planeTranslation1, planeScale1);
-        plane1.Draw();
+        //PreDraw(m_graphicsPipelineShadows, shadowCaster.GetViewMatrix(), shadowCaster.GetProjectionMatrix(), planeTranslation1, planeScale1);
+        //plane1.Draw();
 
 
         // REAL RENDERING PASS
@@ -620,7 +625,7 @@ void GraphicsProgram::MainLoop(){
         SetShadowUniforms(m_graphicsPipelineLit, shadowCaster);
 
         // Gold Chalice
-        SetLightingUniforms(m_graphicsPipelineLit, {204, 164, 0}, 75);
+        SetLightingUniforms(m_graphicsPipelineLit, {20, 20, 20}, 75);
         // Astronaut
         // SetLightingUniforms(m_graphicsPipelineLit, {200, 200, 200}, 75);
 
@@ -649,11 +654,11 @@ void GraphicsProgram::MainLoop(){
 
          // DRAW PLANE
         PreDraw(m_graphicsPipelineLit, gCamera.GetViewMatrix(), projectionMatrix, planeTranslation, planeScale);
-        SetLightingUniforms(m_graphicsPipelineLit, {34, 139, 34}, 120);
+        SetLightingUniforms(m_graphicsPipelineLit, {40, 40, 40}, 120);
         plane.Draw();
-        PreDraw(m_graphicsPipelineLit, gCamera.GetViewMatrix(), projectionMatrix, planeTranslation1, planeScale1);
-        SetLightingUniforms(m_graphicsPipelineLit, {100, 0, 0}, 20);
-        plane1.Draw();
+        //PreDraw(m_graphicsPipelineLit, gCamera.GetViewMatrix(), projectionMatrix, planeTranslation1, planeScale1);
+        //SetLightingUniforms(m_graphicsPipelineLit, {100, 0, 0}, 20);
+        //plane1.Draw();
 
 		//Update screen of our specified window
 		SDL_GL_SwapWindow(gGraphicsApplicationWindow);
