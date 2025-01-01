@@ -339,7 +339,7 @@ void GraphicsProgram::PreDraw(int graphicsPipeline, glm::mat4 viewMatrix, glm::m
 
     // Initialize clear color
     // This is the background of the screen.
-    glClearColor(30.0f / 255.0f, 18.0f / 255.0f, 22.0f / 255.0f, 1.0f);
+    glClearColor(100.0f / 255.0f, 120.0f / 255.0f, 120.0f / 255.0f, 1.0f);
 
     // Use our shader
 	glUseProgram(graphicsPipeline);
@@ -559,7 +559,7 @@ void GraphicsProgram::MainLoop(){
     SDL_WarpMouseInWindow(gGraphicsApplicationWindow,gScreenWidth/2,gScreenHeight/2);
     SDL_SetRelativeMouseMode(SDL_TRUE);
 
-    Plane plane(20.0f, {45, 45, 12});
+    Plane plane(20.0f, {45 * 2, 45 * 2, 35 * 2});
     // Position is behind origin for now, in future can make this position equal to the position of the light to emulate shadow from light
     ShadowDirectionalLight shadowCaster(GL_TEXTURE1, glm::vec3(0, 0.3, 1), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0), 0.1f, 30.0f);
 
