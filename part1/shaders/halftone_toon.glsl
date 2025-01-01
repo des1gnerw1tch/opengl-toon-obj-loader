@@ -114,7 +114,7 @@ void main()
 	}
 
 	if (dotProdTimesAttenuation < 0.95f)	{ // Cel shading factor, have some darker color in addition to the dots
-		objectColor4 = vec4(objectColor4.r - 0.05, objectColor4.g - 0.05, objectColor4.b, 1.0f);
+		objectColor4 = vec4(objectColor4.r - 0.1, objectColor4.g, objectColor4.b - 0.1, 1.0f);
 	}
 
 	//if (dotProdTimesAttenuation > 1.5f)	{ // Cel shading factor, have some darker color in addition to the dots

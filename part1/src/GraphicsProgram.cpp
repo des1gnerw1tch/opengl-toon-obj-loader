@@ -339,7 +339,7 @@ void GraphicsProgram::PreDraw(int graphicsPipeline, glm::mat4 viewMatrix, glm::m
 
     // Initialize clear color
     // This is the background of the screen.
-    glClearColor(0.0941176470588f, 0.0941176470588f, 0.215686f, 1.0f);
+    glClearColor(30.0f / 255.0f, 18.0f / 255.0f, 22.0f / 255.0f, 1.0f);
 
     // Use our shader
 	glUseProgram(graphicsPipeline);
@@ -559,7 +559,7 @@ void GraphicsProgram::MainLoop(){
     SDL_WarpMouseInWindow(gGraphicsApplicationWindow,gScreenWidth/2,gScreenHeight/2);
     SDL_SetRelativeMouseMode(SDL_TRUE);
 
-    Plane plane(20.0f, {100, 100, 100});
+    Plane plane(20.0f, {45, 45, 12});
     // Position is behind origin for now, in future can make this position equal to the position of the light to emulate shadow from light
     ShadowDirectionalLight shadowCaster(GL_TEXTURE1, glm::vec3(0, 0.3, 1), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0), 0.1f, 30.0f);
 
@@ -625,7 +625,7 @@ void GraphicsProgram::MainLoop(){
         SetShadowUniforms(m_graphicsPipelineLit, shadowCaster);
 
         // Gold Chalice
-        SetLightingUniforms(m_graphicsPipelineLit, {20, 20, 20}, 75);
+        SetLightingUniforms(m_graphicsPipelineLit, {50, 95, 95}, 75);
         // Astronaut
         // SetLightingUniforms(m_graphicsPipelineLit, {200, 200, 200}, 75);
 
@@ -654,7 +654,7 @@ void GraphicsProgram::MainLoop(){
 
          // DRAW PLANE
         PreDraw(m_graphicsPipelineLit, gCamera.GetViewMatrix(), projectionMatrix, planeTranslation, planeScale);
-        SetLightingUniforms(m_graphicsPipelineLit, {40, 40, 40}, 120);
+        SetLightingUniforms(m_graphicsPipelineLit, {30, 30, 1}, 120);
         plane.Draw();
         //PreDraw(m_graphicsPipelineLit, gCamera.GetViewMatrix(), projectionMatrix, planeTranslation1, planeScale1);
         //SetLightingUniforms(m_graphicsPipelineLit, {100, 0, 0}, 20);
