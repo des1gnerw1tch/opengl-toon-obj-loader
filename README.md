@@ -1,4 +1,4 @@
-.obj file loader and texture space halftone shading and Shadows in C++, OpenGL, and GLSL
+OBJ file loader and texture space halftone shading and Shadows in C++, OpenGL, and GLSL
 
 Youtube video: https://www.youtube.com/watch?v=5ADtely6iqA&t=1s
 
